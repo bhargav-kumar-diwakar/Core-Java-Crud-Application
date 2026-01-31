@@ -59,3 +59,28 @@ public class crud{
         }
     }
 }
+
+//CREATE 
+static void createUser(){
+    try{
+        System.out.print("Enter Id: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Age: ");
+        int age = sc.nextInt();
+
+        if(age<=0){
+            System.out.println("Age must be positive.");
+            return;
+        }
+        users.add(new User(id,name,age));
+        System.out.println("Users added successfully!");
+    }catch(InputMismatchException e){
+        System.out.println("Invalid input! ID and age must be numbers.");
+        sc.nextLine();
+    }
+}
