@@ -84,3 +84,14 @@ static void createUser(){
         sc.nextLine();
     }
 }
+
+//READ
+static void readUsers(){
+    if(users.isEmpty()){
+        System.out.println("No users found.");
+        return;
+    }
+    for(User u: users){
+        System.out.println("Id: "+u.id+", Name: "+u.name+", Age: "+u.age);
+    }
+}
