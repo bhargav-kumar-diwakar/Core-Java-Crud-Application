@@ -95,3 +95,28 @@ static void readUsers(){
         System.out.println("Id: "+u.id+", Name: "+u.name+", Age: "+u.age);
     }
 }
+
+//UPDATE
+static void updateUser(){
+    try{
+        System.out.print("Enter the Id to update: ");
+        int id = sc.nextint();
+        sc.nextLine();
+
+        for(User u: users){
+            if(u.id == id){
+                System.out.print("Enter new name: ");
+                u.name = sc.nextLine();
+
+                System.out.print("Enter new age: ");
+                u.age = sc.nextInt();
+
+                System.out.println("User updated successfully!");
+                return;
+            }
+        }System.out.println("User not found!");
+    }catch(InputMismatchException e){
+        System.out.println("Invalid input! Please enter correct values.");
+        sc.nextLine();
+    }
+}
