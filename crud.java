@@ -58,10 +58,8 @@ public class crud{
             }
         }
     }
-}
-
-//CREATE 
-static void createUser(){
+    //CREATE 
+    static void createUser(){
     try{
         System.out.print("Enter Id: ");
         int id = sc.nextInt();
@@ -79,44 +77,65 @@ static void createUser(){
         }
         users.add(new User(id,name,age));
         System.out.println("Users added successfully!");
-    }catch(InputMismatchException e){
-        System.out.println("Invalid input! ID and age must be numbers.");
-        sc.nextLine();
+        }catch(InputMismatchException e){
+            System.out.println("Invalid input! ID and age must be numbers.");
+            sc.nextLine();
+        }
     }
-}
 
-//READ
-static void readUsers(){
-    if(users.isEmpty()){
-        System.out.println("No users found.");
-        return;
-    }
-    for(User u: users){
-        System.out.println("Id: "+u.id+", Name: "+u.name+", Age: "+u.age);
-    }
-}
-
-//UPDATE
-static void updateUser(){
-    try{
-        System.out.print("Enter the Id to update: ");
-        int id = sc.nextint();
-        sc.nextLine();
-
+    //READ
+    static void readUsers(){
+        if(users.isEmpty()){
+            System.out.println("No users found.");
+            return;
+        }
         for(User u: users){
-            if(u.id == id){
-                System.out.print("Enter new name: ");
-                u.name = sc.nextLine();
+            System.out.println("Id: "+u.id+", Name: "+u.name+", Age: "+u.age);
+        }
+    }
 
-                System.out.print("Enter new age: ");
-                u.age = sc.nextInt();
+    //UPDATE
+    static void updateUser(){
+        try{
+            System.out.print("Enter the Id to update: ");
+            int id = sc.nextInt();
+            sc.nextLine();
 
-                System.out.println("User updated successfully!");
-                return;
+            for(User u: users){
+                if(u.id == id){
+                    System.out.print("Enter new name: ");
+                    u.name = sc.nextLine();
+
+                    System.out.print("Enter new age: ");
+                    u.age = sc.nextInt();
+
+                    System.out.println("User updated successfully!");
+                    return;
+                }
+            }System.out.println("User not found!");
+        }catch(InputMismatchException e){
+            System.out.println("Invalid input! Please enter correct values.");
+            sc.nextLine();
+        }
+    }   
+
+    //DELETE
+    static void deleteUser(){
+        try{
+            System.out.print("Enter ID to delete: ");
+            int id = sc.nextInt();
+
+            for(User u: users){
+                if(u.id == id){
+                    users.remove(u);
+                    System.out.println("User Deleted successfully!");
+                    return;
+                }
             }
-        }System.out.println("User not found!");
-    }catch(InputMismatchException e){
-        System.out.println("Invalid input! Please enter correct values.");
-        sc.nextLine();
+        }catch(InputMismatchException e){
+            System.out.println("Invalid input! ID must be number.");
+            sc.nextLine();
+        }
     }
 }
+
